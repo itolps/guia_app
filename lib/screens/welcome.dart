@@ -46,13 +46,13 @@ class Welcome extends StatelessWidget {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: Color.fromRGBO(255, 145, 77, 1.0),
                       borderRadius: BorderRadius.circular(10)),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.arrow_forward_ios,
-                      color: Color.fromRGBO(255, 145, 77, 1.0),
+                      color: Colors.white,
                     ),
                   ),
                 ),

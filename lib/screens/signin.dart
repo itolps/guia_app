@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Signin extends StatefulWidget {
   @override
@@ -6,6 +10,41 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  bool _isLoading = false;
+
+  signIn(String email, String password) async {
+    String url = "http://192.168.0.105:3000/auth/login";
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    Map body = {"username": email, "password": password};
+    var jsonResponse;
+    var res = await http.post(url, body: body);
+
+    if (res.statusCode == 200) {
+      jsonResponse = json.decode(res.body);
+
+      print("Response status: ${res.statusCode}");
+
+      print("Response status: ${res.body}");
+
+      if (jsonResponse != null) {
+        setState(() {
+          _isLoading = false;
+        });
+
+        sharedPreferences.setString("token", jsonResponse['token']);
+      }
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+
+      print("Response status: ${res.body}");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +74,7 @@ class _SigninState extends State<Signin> {
                       child: Container(
                         margin: EdgeInsets.only(left: 4, right: 20),
                         child: TextField(
+                          controller: _emailController,
                           decoration: InputDecoration(
                             hintText: "Email",
                           ),
@@ -54,6 +94,8 @@ class _SigninState extends State<Signin> {
                       child: Container(
                         margin: EdgeInsets.only(left: 4, right: 20),
                         child: TextField(
+                          controller: _passwordController,
+                          obscureText: true,
                           decoration: InputDecoration(
                             hintText: "Senha",
                           ),
@@ -81,7 +123,17 @@ class _SigninState extends State<Signin> {
                             fontWeight: FontWeight.bold,
                             fontSize: 20),
                       ),
-                      onPressed: () {},
+                      onPressed: _emailController.text == "" ||
+                              _passwordController.text == ""
+                          ? null
+                          : () {
+                              setState(() {
+                                _isLoading = true;
+                              });
+                              signIn(_emailController.text,
+                                  _passwordController.text);
+                                 Navigator.pushReplacementNamed(context, 'Home'); 
+                            },
                     ),
                   ),
                 ),
