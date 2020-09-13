@@ -1,6 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:guia_app/controllers/user.controller.dart';
+import 'package:guia_app/screens/home.dart';
+import 'package:guia_app/services/sharedPreferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,40 +13,43 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  UserController userController = UserController();
+  SharedPref sharedPref = SharedPref();
 
-  bool _isLoading = false;
+  // TextEditingController _emailController = TextEditingController();
+  // TextEditingController _passwordController = TextEditingController();
 
-  signIn(String email, String password) async {
-    String url = "http://192.168.0.105:3000/auth/login";
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    Map body = {"username": email, "password": password};
-    var jsonResponse;
-    var res = await http.post(url, body: body);
+  // bool _isLoading = false;
 
-    if (res.statusCode == 200) {
-      jsonResponse = json.decode(res.body);
+  // signIn(String email, String password) async {
+  //   String url = "http://192.168.0.105:3000/auth/login";
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   Map body = {"username": email, "password": password};
+  //   var jsonResponse;
+  //   var res = await http.post(url, body: body);
 
-      print("Response status: ${res.statusCode}");
+  //   if (res.statusCode == 200) {
+  //     jsonResponse = json.decode(res.body);
 
-      print("Response status: ${res.body}");
+  //     print("Response status: ${res.statusCode}");
 
-      if (jsonResponse != null) {
-        setState(() {
-          _isLoading = false;
-        });
+  //     print("Response status: ${res.body}");
 
-        sharedPreferences.setString("token", jsonResponse['token']);
-      }
-    } else {
-      setState(() {
-        _isLoading = false;
-      });
+  //     if (jsonResponse != null) {
+  //       setState(() {
+  //         _isLoading = false;
+  //       });
 
-      print("Response status: ${res.body}");
-    }
-  }
+  //       sharedPreferences.setString("token", jsonResponse['token']);
+  //     }
+  //   } else {
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+
+  //     print("Response status: ${res.body}");
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +80,7 @@ class _SigninState extends State<Signin> {
                       child: Container(
                         margin: EdgeInsets.only(left: 4, right: 20),
                         child: TextField(
-                          controller: _emailController,
+                          controller: userController.emailController,
                           decoration: InputDecoration(
                             hintText: "Email",
                           ),
@@ -94,7 +100,7 @@ class _SigninState extends State<Signin> {
                       child: Container(
                         margin: EdgeInsets.only(left: 4, right: 20),
                         child: TextField(
-                          controller: _passwordController,
+                          controller: userController.passwordController,
                           obscureText: true,
                           decoration: InputDecoration(
                             hintText: "Senha",
@@ -123,17 +129,18 @@ class _SigninState extends State<Signin> {
                             fontWeight: FontWeight.bold,
                             fontSize: 20),
                       ),
-                      onPressed: _emailController.text == "" ||
-                              _passwordController.text == ""
-                          ? null
-                          : () {
-                              setState(() {
-                                _isLoading = true;
-                              });
-                              signIn(_emailController.text,
-                                  _passwordController.text);
-                                 Navigator.pushReplacementNamed(context, 'Home'); 
-                            },
+                      onPressed: () {
+                        userController.login().then((onValue) async {
+                          if (onValue) {
+                            Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(builder: (BuildContext context) => Home()),
+                              (Route<dynamic> route) => false);
+                          
+                          } else {
+                            print("ERRO! E-mail ou senha invalidos");
+                          }
+                        });
+                      },
                     ),
                   ),
                 ),

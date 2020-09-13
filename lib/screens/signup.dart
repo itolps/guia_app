@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:guia_app/controllers/user.controller.dart';
 
 class Signup extends StatefulWidget {
   @override
   _SignupState createState() => _SignupState();
+
+  UserController userController = UserController();
 }
 
 class _SignupState extends State<Signup> {
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +39,7 @@ class _SignupState extends State<Signup> {
                       child: Container(
                         margin: EdgeInsets.only(left: 4, right: 20),
                         child: TextField(
+                          controller: widget.userController.nameController,
                           decoration: InputDecoration(
                             hintText: "Nome",
                           ),
@@ -55,6 +59,7 @@ class _SignupState extends State<Signup> {
                       child: Container(
                         margin: EdgeInsets.only(left: 4, right: 20),
                         child: TextField(
+                          controller: widget.userController.emailController,
                           decoration: InputDecoration(
                             hintText: "Email",
                           ),
@@ -74,6 +79,7 @@ class _SignupState extends State<Signup> {
                       child: Container(
                         margin: EdgeInsets.only(left: 4, right: 20),
                         child: TextField(
+                          controller: widget.userController.passwordController,
                           decoration: InputDecoration(
                             hintText: "Senha",
                           ),
@@ -101,7 +107,15 @@ class _SignupState extends State<Signup> {
                             fontWeight: FontWeight.bold,
                             fontSize: 20),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        widget.userController.create().then((onValue) {
+                          if (onValue) {
+                            Navigator.pushReplacementNamed(context, 'Signin');
+                          } else {
+                            print("Erro ao cadastrar");
+                          }
+                        });
+                      },
                     ),
                   ),
                 ),
