@@ -11,7 +11,7 @@ class UserService {
   //Cadastrar
   Future<bool> create(User data) async {
     final response = await client.post(
-      "http://192.168.0.105:3000/users",
+      "http://192.168.0.107:3333/users",
       headers: {"content-type": "application/json"},
       body: User.userToJson(data),
     );
@@ -29,10 +29,10 @@ class UserService {
     var jsonResponse;
 
     final response = await client.post(
-      "http://192.168.0.105:3000/auth/login",
+      "http://192.168.0.107:3333/login",
       body: data,
     );
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       jsonResponse = json.decode(response.body);
       if (jsonResponse != null) {
         sharedPref.saveToken("token", jsonResponse['access_token']);
@@ -46,7 +46,4 @@ class UserService {
       return false;
     }
   }
-
-  
 }
-

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guia_app/screens/home.dart';
+import 'package:guia_app/screens/home_page.dart';
 
 class Welcome extends StatelessWidget {
   @override
@@ -42,7 +42,7 @@ class Welcome extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => Home()));
+                      context, MaterialPageRoute(builder: (_) => HomePage()));
                 },
                 child: Container(
                   decoration: BoxDecoration(

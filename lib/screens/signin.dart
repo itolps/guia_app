@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:guia_app/controllers/user.controller.dart';
-import 'package:guia_app/screens/home.dart';
+import 'package:guia_app/screens/home_page.dart';
 import 'package:guia_app/services/sharedPreferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -133,9 +133,10 @@ class _SigninState extends State<Signin> {
                         userController.login().then((onValue) async {
                           if (onValue) {
                             Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(builder: (BuildContext context) => Home()),
-                              (Route<dynamic> route) => false);
-                          
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        HomePage()),
+                                (Route<dynamic> route) => false);
                           } else {
                             print("ERRO! E-mail ou senha invalidos");
                           }
