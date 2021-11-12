@@ -16,41 +16,6 @@ class _SigninState extends State<Signin> {
   UserController userController = UserController();
   SharedPref sharedPref = SharedPref();
 
-  // TextEditingController _emailController = TextEditingController();
-  // TextEditingController _passwordController = TextEditingController();
-
-  // bool _isLoading = false;
-
-  // signIn(String email, String password) async {
-  //   String url = "http://192.168.0.105:3000/auth/login";
-  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  //   Map body = {"username": email, "password": password};
-  //   var jsonResponse;
-  //   var res = await http.post(url, body: body);
-
-  //   if (res.statusCode == 200) {
-  //     jsonResponse = json.decode(res.body);
-
-  //     print("Response status: ${res.statusCode}");
-
-  //     print("Response status: ${res.body}");
-
-  //     if (jsonResponse != null) {
-  //       setState(() {
-  //         _isLoading = false;
-  //       });
-
-  //       sharedPreferences.setString("token", jsonResponse['token']);
-  //     }
-  //   } else {
-  //     setState(() {
-  //       _isLoading = false;
-  //     });
-
-  //     print("Response status: ${res.body}");
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

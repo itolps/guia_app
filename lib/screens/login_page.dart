@@ -163,16 +163,20 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         onPressed: () {
-          userController.login().then((onValue) async {
-            if (onValue) {
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => HomePage()),
-                  (Route<dynamic> route) => false);
-            } else {
-              print("ERRO! E-mail ou senha invalidos");
-            }
-          });
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()),
+          );
+          // userController.login().then((onValue) async {
+          //   if (onValue) {
+          //     Navigator.of(context).pushAndRemoveUntil(
+          //         MaterialPageRoute(
+          //             builder: (BuildContext context) => HomePage()),
+          //         (Route<dynamic> route) => false);
+          //   } else {
+          //     print("ERRO! E-mail ou senha invalidos");
+          //   }
+          // });
         },
         color: Color(0xFFFF914D),
         shape: RoundedRectangleBorder(

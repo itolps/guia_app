@@ -145,8 +145,7 @@ List<Restaurant> restaurants = [
       distance: "4,1 km",
       favorite: false,
       name: "Restaurante Japones",
-      photoUrl:
-          "https://i.pinimg.com/736x/58/ba/8b/58ba8bc8d560d03e5de064a222a52564.jpg",
+      photoUrl: "https://logospng.org/download/pix/logo-pix-icone-1024.png",
       rate: 4.6,
       time: [60, 80]),
   Restaurant(
@@ -167,76 +166,6 @@ List<Restaurant> restaurants = [
       name: "Restaurante Japones",
       photoUrl:
           "https://st2.depositphotos.com/7109552/11377/v/600/depositphotos_113775112-stock-illustration-vintage-restaurant-and-cafe-label.jpg",
-      rate: 4.6,
-      time: [60, 80]),
-  Restaurant(
-      category: 'Japonesa',
-      deliveryTaxe: "R\$ 5,99",
-      distance: "4,1 km",
-      favorite: false,
-      name: "Restaurante Japones",
-      photoUrl:
-          "https://freedesignfile.com/upload/2016/10/Restaurant-logos-creative-design-vector-07.jpg",
-      rate: 4.6,
-      time: [60, 80]),
-  Restaurant(
-      category: 'Japonesa',
-      deliveryTaxe: "R\$ 5,99",
-      distance: "4,1 km",
-      favorite: false,
-      name: "Restaurante Japones",
-      photoUrl:
-          "https://i.pinimg.com/originals/13/ea/97/13ea973cdc14d45e27d8285f2020c6bf.png",
-      rate: 4.6,
-      time: [60, 80]),
-  Restaurant(
-      category: 'Japonesa',
-      deliveryTaxe: "R\$ 5,99",
-      distance: "4,1 km",
-      favorite: false,
-      name: "Restaurante Japones",
-      photoUrl:
-          "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/sushi-bar-restaurant-logo-design-template-a917bf7521aa74b08179cad073df41c1_screen.jpg?ts=1597302425",
-      rate: 4.6,
-      time: [60, 80]),
-  Restaurant(
-      category: 'Japonesa',
-      deliveryTaxe: "R\$ 5,99",
-      distance: "4,1 km",
-      favorite: false,
-      name: "Restaurante Japones",
-      photoUrl:
-          "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/sushi-bar-restaurant-logo-design-template-a917bf7521aa74b08179cad073df41c1_screen.jpg?ts=1597302425",
-      rate: 4.6,
-      time: [60, 80]),
-  Restaurant(
-      category: 'Japonesa',
-      deliveryTaxe: "R\$ 5,99",
-      distance: "4,1 km",
-      favorite: false,
-      name: "Restaurante Japones",
-      photoUrl:
-          "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/sushi-bar-restaurant-logo-design-template-a917bf7521aa74b08179cad073df41c1_screen.jpg?ts=1597302425",
-      rate: 4.6,
-      time: [60, 80]),
-  Restaurant(
-      category: 'Japonesa',
-      deliveryTaxe: "R\$ 5,99",
-      distance: "4,1 km",
-      favorite: false,
-      name: "Restaurante Japones",
-      photoUrl:
-          "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/sushi-bar-restaurant-logo-design-template-a917bf7521aa74b08179cad073df41c1_screen.jpg?ts=1597302425",
-      rate: 4.6,
-      time: [60, 80]),
-  Restaurant(
-      category: 'Japonesa',
-      deliveryTaxe: "R\$ 5,99",
-      distance: "4,1 km",
-      favorite: false,
-      name: "Restaurante Japones",
-      photoUrl:
-          "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/sushi-bar-restaurant-logo-design-template-a917bf7521aa74b08179cad073df41c1_screen.jpg?ts=1597302425",
       rate: 4.6,
       time: [60, 80]),
 ];

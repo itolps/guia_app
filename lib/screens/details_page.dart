@@ -1,17 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:guia_app/controllers/user.controller.dart';
 import 'package:guia_app/core/theme/app_icons.dart';
-import 'package:guia_app/core/theme/app_images.dart';
-import 'package:guia_app/core/theme/app_typography.dart';
-import 'package:guia_app/screens/getstarted_page.dart';
 import 'package:guia_app/screens/home_page.dart';
-import 'package:guia_app/screens/register_page.dart';
-import 'package:guia_app/services/sharedPreferences.dart';
-import 'package:guia_app/widgets/app_card.dart';
-import 'package:guia_app/widgets/app_header_details.dart';
-import 'package:guia_app/widgets/app_header_home.dart';
-import 'package:guia_app/widgets/app_text.dart';
+import 'package:guia_app/screens/payment_page.dart';
 import 'package:guia_app/widgets/bottom_navigator.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -264,7 +255,12 @@ class _DetailsPageState extends State<DetailsPage> {
             fontSize: 13,
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PaymentPage()),
+          );
+        },
         color: Color(0xFFFF914D),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(25),
